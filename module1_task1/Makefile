@@ -1,10 +1,8 @@
-.PHONY: build clean post
-
 build:
-	hugo -d dist/
+	hugo
 
 clean:
-	rm -r dist/*
+	rm -r dist
 
 post:
 	hugo new posts/$(POST_NAME).md
