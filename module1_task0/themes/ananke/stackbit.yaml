@@ -1,9 +1,9 @@
 stackbitVersion: ~0.2.39
 ssgName: custom
-publishDir: exampleSite/public
+publishDir: exampleSite/dist
 buildCommand: cd exampleSite && hugo --gc --baseURL "/" --themesDir ../.. && cd ..
 uploadDir: uploads
-staticDir: exampleSite/static
+staticDir: exampleSite/dist
 pagesDir: exampleSite/content
 dataDir: exampleSite
 models:
