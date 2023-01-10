@@ -1,0 +1,20 @@
+name: module3_task2
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 3 * * *'
+jobs:
+  module3_task1:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo module3_task2/setup.sh
+      - run: cd module3_task1 && make help
+      - run: cd module3_task1 && make build
+      - run: cd module3_task1 && make post POST_NAME="name" POST_TITLE="title"
+      - run: cd module3_task1 && make test # Run tests
+      - run: cd module3_task1 && make validate # Run validations
+      - if: success() # Check if tests and validations were successful
+      - run: cd module3_task1 && make package
