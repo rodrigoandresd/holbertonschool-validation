@@ -7,7 +7,7 @@ on:
   - cron: '0 3 * * *'
 jobs:
   module3_task1:
-    runs-on: Ubuntu 20.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - run: sudo module3_task1/setup.sh
