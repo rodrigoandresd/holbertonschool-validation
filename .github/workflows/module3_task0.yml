@@ -1,6 +1,9 @@
 name: module3_task0
 on:
   push:
+    branches:
+      - main
+      - master
   schedule:
     - cron: '0 3 * * *'
 jobs:
