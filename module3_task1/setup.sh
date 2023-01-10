@@ -6,4 +6,3 @@ curl -L https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extende
 apt-get install -y ./hugo.deb
 rm hugo.deb
 apt-get install -y make
-make build
