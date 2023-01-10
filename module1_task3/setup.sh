@@ -2,7 +2,7 @@
 
 # Install required packages
 apt-get update
-apt-get install -y make golang hugo
+apt-get install -y make hugo make
 
 # Build the website
 make build
