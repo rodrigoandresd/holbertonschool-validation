@@ -1,0 +1,19 @@
+name: module3_task1
+on:
+  push:
+    branches:
+    - main
+  schedule:
+  - cron: '0 3 * * *'
+jobs:
+  module3_task0:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: sudo module3_task1/setup.sh
+    - run: cd module3_task1 && make help
+    - run: cd module3_task1 && make build
+    - run: cd module3_task1 && make clean
+    - run: cd module3_task1 && make build
+    - run: cd module3_task1 && make post POST_NAME="The_name"
+    POST_TITLE="The_title"
