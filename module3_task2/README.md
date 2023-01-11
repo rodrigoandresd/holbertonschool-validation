@@ -1,6 +1,8 @@
 # Building a Go-Hugo Website
 
-This project uses the Go programming language and the Hugo static site generator to build a website. In order to build the website, you will need to have the following tools installed on your system:
+This project uses the Go programming language and the Hugo static site
+generator to build a website. In order to build the website, you will
+need to have the following tools installed on your system:
 
 ## Prerequisites:
 
@@ -15,11 +17,13 @@ This project uses the Go programming language and the Hugo static site generator
 ## Lifecycle:
 
 
-To build the website, run the following command from the root directory of the project:
+To build the website, run the following command from the root directory
+of the project:
 
 - make build
 
-This will generate the website from the source files and configuration files, and store the generated files in the "dist/" directory.
+This will generate the website from the source files and configuration
+files, and store the generated files in the "dist/" directory.
 
 ## Cleaning the Build Directory
 
@@ -34,10 +38,12 @@ To create a new blog post, run the following command:
 
 - make post POST_NAME=<name of post> POST_TITLE=<title of post>
 
-This will create a new blog post with the specified name and title in the "posts/" directory.
+This will create a new blog post with the specified name and title in
+the "posts/" directory.
 
 ## Help
-For more information on the available targets and their usage, run the following command:
+For more information on the available targets and their usage, run the
+following command:
 
 - make help
 
@@ -45,8 +51,11 @@ For more information on the available targets and their usage, run the following
 
 - package
 
-This will display a list of available targets and a brief description of each one.
+This will display a list of available targets and a brief description
+of each one.
 
 ## Code Comments
 
-The source code for this project includes comments to provide additional context and information for readers. Please refer to these comments for more information on the inner workings of the code.
+The source code for this project includes comments to provide additional
+context and information for readers. Please refer to these comments for more
+information on the inner workings of the code.
