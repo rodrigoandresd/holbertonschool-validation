@@ -6,7 +6,7 @@ on:
   schedule:
     - cron: '0 3 * * *'
 jobs:
-  module3_task1:
+  module3_task2:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
@@ -18,3 +18,6 @@ jobs:
       - run: cd module3_task2 && make validate
       - if: success() # Check if tests and validations were successful
       - run: cd module3_task2 && make package
+      - uses: actions/upload-artifact@v3
+        with:
+          path: module3_task2/awesome-website.zip
