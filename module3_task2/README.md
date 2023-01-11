@@ -41,6 +41,10 @@ For more information on the available targets and their usage, run the following
 
 - make help
 
+## Create a zip file containing the 'dist/' folder
+
+- package
+
 This will display a list of available targets and a brief description of each one.
 
 ## Code Comments
