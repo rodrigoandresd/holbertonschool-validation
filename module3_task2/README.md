@@ -4,7 +4,7 @@ This project uses the Go programming language and the Hugo static site
 generator to build a website. In order to build the website, you will
 need to have the following tools installed on your system:
 
-## Prerequisites:
+## Prerequisites
 
 - GNU Make in version 3.81+
 - Go Hugo v0.80+
@@ -14,8 +14,7 @@ need to have the following tools installed on your system:
 [Step 3](https://docs.edg.io/guides/sites_frameworks/getting_started/hugo).
 - The website is expected to be generated into ./dist folder but this folder
 
-## Lifecycle:
-
+## Lifecycle
 
 To build the website, run the following command from the root directory
 of the project:
@@ -34,14 +33,16 @@ To clean up the build directory, run the following command:
 This will delete all files in the "dist/" directory.
 
 ## Creating a New Blog Post
+
 To create a new blog post, run the following command:
 
-- make post POST_NAME=<name of post> POST_TITLE=<title of post>
+- make post
 
 This will create a new blog post with the specified name and title in
 the "posts/" directory.
 
 ## Help
+
 For more information on the available targets and their usage, run the
 following command:
 
