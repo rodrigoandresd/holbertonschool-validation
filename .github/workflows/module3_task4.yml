@@ -31,3 +31,4 @@ jobs:
             module3_task4/DEPLOY.md
           body_path: module3_task4/DEPLOY.md
           # This is other version
+      - uses: release-drafter/release-drafter@v5.21.1
