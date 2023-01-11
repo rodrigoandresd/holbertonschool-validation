@@ -7,12 +7,12 @@ clean: ## Clean the build directory
 	@rm -r dist/*
 
 post: ## Create a new blog post
-	@rm -Rf content/posts/$(POST_NAME).md
 	@hugo new posts/$(POST_NAME).md
 ## Update the title of the new post
 	@sed -i "s/title: .*/title: $(POST_TITLE)/" ./content/posts/$(POST_NAME).md
 
-package: build ## Package the website
+package: ## Package the website
+	@hugo
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
