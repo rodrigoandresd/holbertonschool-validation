@@ -9,12 +9,24 @@ jobs:
   module3_task1:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
-      - run: sudo module3_task2/setup.sh
-      - run: cd module3_task1 && make help
-      - run: cd module3_task1 && make build
-      - run: cd module3_task1 && make post POST_NAME="name" POST_TITLE="title"
-      - run: cd module3_task1 && make test # Run tests
-      - run: cd module3_task1 && make validate # Run validations
+      - name: Clone the repository
+        uses: actions/checkout@v3
+
+      - name: Execute the script
+        run: sudo module3_task2/setup.sh
+
+      # Check syntax on markdown files
+      - name: Run markdownlint
+        run: cd module3_task2 && make lint
+
+      - name: Build the application
+        run: cd module3_task2 && make build
+
+      - name: Additionals make
+        run: | 
+        cd module3_task2 && make unit-tests
+        cd module3_task2 && make integration-tests
+        cd module3_task2 && make validate
+
       - if: success() # Check if tests and validations were successful
-      - run: cd module3_task1 && make package
+      - run: cd module3_task2 && make package
