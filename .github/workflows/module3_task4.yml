@@ -31,4 +31,6 @@ jobs:
             module3_task4/DEPLOY.md
           body_path: module3_task4/DEPLOY.md
           # This is other version
+      - run: gh release create v1.0.1 --title "v1.0.1" \
+          --notes DEPLOY.md 2>/dev/null || echo "OK"
       - uses: release-drafter/release-drafter@v5.21.1
