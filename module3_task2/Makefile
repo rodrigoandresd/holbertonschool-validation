@@ -13,7 +13,7 @@ post: ## Create a new blog post
 	@sed -i "s/title: .*/title: $(POST_TITLE)/" ./content/posts/$(POST_NAME).md
 
 package: build ## Package the website
-	@zip -r awesome-website.zip awesome-api dist/
+	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
 	@markdownlint README.md DEPLOY.md
