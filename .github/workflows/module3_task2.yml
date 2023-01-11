@@ -5,6 +5,7 @@ on:
       - main
   schedule:
     - cron: '0 3 * * *'
+permissions: read-all
 jobs:
   module3_task2:
     runs-on: ubuntu-18.04
