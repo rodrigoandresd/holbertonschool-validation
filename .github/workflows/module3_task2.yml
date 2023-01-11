@@ -4,18 +4,24 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 0 * * *'
+
 permissions: read-all
+
 jobs:
-  module3_task2:
+  builds:
+    name: job1
     runs-on: ubuntu-18.04
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
       - run: sudo module3_task2/setup.sh
-      - run: npm install -g markdownlint-cli
+      - name: install markdown
+        run: npm install -g markdownlint-cli
+
       - run: cd module3_task2 && make help
       - run: cd module3_task2 && make build
       - run: cd module3_task2 && make clean
