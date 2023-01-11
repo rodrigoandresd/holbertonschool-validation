@@ -5,24 +5,18 @@ on:
       - main
   schedule:
     - cron: '0 3 * * *'
-permissions: read-all
 jobs:
   module3_task2:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
       - run: sudo module3_task2/setup.sh
-      - run: npm install -g markdownlint-cli
-      - run: cd module3_task2 && make help
-      - run: cd module3_task2 && make build
-      - run: cd module3_task2 && make clean
-      - run: cd module3_task2 && make build
-      - run: cd module3_task2 && make post POST_NAME="name" POST_TITLE="title"
       - run: cd module3_task2 && make lint
+      - run: cd module3_task2 && make build
       - run: cd module3_task2 && make package
       - run: cd module3_task2 && make unit-tests
       - run: cd module3_task2 && make integration-tests
       - run: cd module3_task2 && make validate
+      - uses: actions/upload-artifact@v3
+        with:
+          path: module3_task2/awesome-website.zip
