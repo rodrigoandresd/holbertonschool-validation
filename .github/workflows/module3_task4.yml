@@ -1,0 +1,33 @@
+name: module3_task4
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "1.0.1"
+  schedule:
+    - cron: '0 3 * * *'
+jobs:
+  module3_task3:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo module3_task4/setup.sh
+      - run: cd module3_task4 && make lint
+      - run: cd module3_task4 && make build
+      - run: cd module3_task4 && make package
+      - run: cd module3_task4 && make unit-tests
+      - run: cd module3_task4 && make integration-tests
+      - run: cd module3_task4 && make validate
+      - uses: actions/upload-artifact@v3
+        with:
+          path: module3_task4/awesome-website.zip
+      # create a Release
+      - uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/1.0.1')
+        with:
+          files: |
+            module3_task4/awesome-website.zip
+            module3_task4/DEPLOY.md
+          body_path: module3_task4/DEPLOY.md
+          # This is other version
