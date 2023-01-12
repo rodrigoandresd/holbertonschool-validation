@@ -3,6 +3,11 @@ module1_task1/dist/
 module1_task2/dist/
 module1_task3/dist/
 module1_task4/dist/
+module1_task5/dist/
 module3_task2/awesome-website.zip
 module3_task3/awesome-website.zip
 module3_task4/awesome-website.zip
+module3_task5/awesome-website.zip
+
+# Local Netlify folder
+.netlify

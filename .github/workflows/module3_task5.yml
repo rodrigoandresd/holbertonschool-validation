@@ -1,0 +1,51 @@
+name: module3_task5
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "1.0.1"
+  schedule:
+    - cron: '0 3 * * *'
+  pull_request:
+    types: [opened, reopened, edited, ready_for_review]
+jobs:
+  module3_task3:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo module3_task5/setup.sh
+      - run: cd module3_task5 && make lint
+      - run: cd module3_task5 && make build
+      - run: cd module3_task5 && make package
+      - run: cd module3_task5 && make unit-tests
+      - run: cd module3_task5 && make integration-tests
+      - run: cd module3_task5 && make validate
+      - uses: actions/upload-artifact@v3
+        with:
+          path: module3_task5/awesome-website.zip
+      # create a Release
+      - uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/1.0.1')
+        with:
+          files: |
+            module3_task5/awesome-website.zip
+            module3_task5/DEPLOY.md
+          body_path: module3_task5/DEPLOY.md
+          # This is other version
+      - run: gh release create v1.0.1 --title "v1.0.1" \
+          --notes DEPLOY.md 2>/dev/null || echo "OK"
+      - uses: release-drafter/release-drafter@v5.21.1
+      - uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './module3_task5/dist'
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: true
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
