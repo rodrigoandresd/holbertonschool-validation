@@ -23,7 +23,7 @@ unit-tests: ## Run unit-tets of the project
 	@touch coverage-units.out
 
 integration-tests: ## Run integration-tests of the project
-	@touch coverage-integration.out
+	@touch coverage-integrations.out
 
 validate: ## Validate the project
 
