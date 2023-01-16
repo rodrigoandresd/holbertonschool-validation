@@ -1,0 +1,52 @@
+name: module4_task0
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "1.0.1"
+  schedule:
+    - cron: '0 3 * * *'
+  pull_request:
+    types: [opened, reopened, edited, ready_for_review]
+jobs:
+  module3_task3:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo module4_task0/setup.sh
+      - run: cd module4_task0 && make lint
+      - run: cd module4_task0 && make build
+      - run: cd module4_task0 && make package
+      - run: cd module4_task0 && make unit-tests
+      - run: cd module4_task0 && make integration-tests
+      - run: cd module4_task0 && make validate
+      - uses: actions/upload-artifact@v3
+        with:
+          path: module4_task0/awesome-website.zip
+      # create a Release
+      - uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/1.0.1')
+        with:
+          files: |
+            module4_task0/awesome-website.zip
+            module4_task0/DEPLOY.md
+          body_path: module4_task0/DEPLOY.md
+          # This is other version
+      - run: gh release create v1.0.1 --title "v1.0.1" \
+          --notes DEPLOY.md 2>/dev/null || echo "OK"
+      - uses: release-drafter/release-drafter@v5.21.1
+      - uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './module4_task0/dist'
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "🚀 Deployed on"
+          publish-message: '🎉 Published on'
+          enable-pull-request-comment: true
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
