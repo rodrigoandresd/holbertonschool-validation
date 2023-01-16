@@ -6,9 +6,6 @@ build: ## Build the website
 	@hugo -d dist/
 	@touch awesome-api
 
-build-docker:
-
-
 clean: ## Clean the build directory
 	@rm -r dist/*
 
