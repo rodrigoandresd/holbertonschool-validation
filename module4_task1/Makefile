@@ -19,7 +19,8 @@ package: ## Package the website
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
-	@markdownlint module4_task1/README.md module4_task1/DEPLOY.md
+	@apt-get install markdownlint
+	@markdownlint README.md DEPLOY.md
 
 unit-tests: ## Run unit-tets of the project
 	@touch coverage-units.out
