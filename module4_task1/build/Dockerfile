@@ -15,4 +15,3 @@ RUN apt install zip -y
 RUN npm install -g markdownlint-cli
 RUN rm -rf /usr/local/go
 
-ENTRYPOINT ["make"]
