@@ -35,7 +35,8 @@ build-docker: ## Build a docker image named awesome:build from the Dockerfile
 	@docker build -t $(DOCKER_IMAGE_NAME) ./build
 
 build-hugo: ## build dependencies
-	@sudo apt install ./hugo.deb
+	@apt-get update
+	@apt-get install hugo -y
 
 help: ## Show commands usage information
 	@echo "Available targets:"
