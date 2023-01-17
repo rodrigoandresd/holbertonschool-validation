@@ -1,5 +1,3 @@
-DOCKER_IMAGE_NAME ?= awesome:build
-
 .PHONY: ## build clean post
 
 build: ## Build the website
@@ -19,7 +17,8 @@ post: ## Create a new blog post
 	@sed -i "s/title: .*/title: $(POST_TITLE)/" ./content/posts/$(POST_NAME).md
 
 package: ## Package the website
-	@hugo
+	@make build
+	@mkdir -p dist
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
@@ -38,7 +37,7 @@ integration-tests: ## Run integration-tests of the project
 validate: ## Validate the project
 
 build-docker: ## Build a docker image named awesome:build from the Dockerfile
-	@docker build -t $(DOCKER_IMAGE_NAME) ./build
+	@docker build -t "awesome:build" ./build
 
 build-hugo: ## build dependencies
 	@apt-get update && apt-get install -y make wget
