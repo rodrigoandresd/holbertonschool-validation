@@ -21,7 +21,7 @@ package: ## Package the website
 
 lint: ## Check markdown files for any syntax mistake
 	sudo apt install curl -y
-	curl --silent --location https://deb.nodesource.com/setup_16.x | bash -
+	curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 	apt install nodejs -y
 	npm install -g markdownlint-cli 1>&2
 	@markdownlint README.md DEPLOY.md
