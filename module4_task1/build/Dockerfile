@@ -1,8 +1,8 @@
 FROM golang:1.15.8-buster
 
-WORKDIR /app
+RUN mkdir -p /module4_task1
 
-COPY . .
+COPY . /module4_task1
 
 RUN apt-get update
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
