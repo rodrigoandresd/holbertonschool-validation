@@ -21,8 +21,8 @@ package: ## Package the website
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
-	@apt-get update
-	@apt-get install curl -y
+	@sudu apt-get update
+	@sudo apt-get install curl -y
 	@curl -sL https://deb.nodesource.com/setup_16.x | bash -
 	@apt-get install nodejs -y
 	@npm install -g markdownlint-cli
