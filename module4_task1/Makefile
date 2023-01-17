@@ -3,7 +3,8 @@ DOCKER_IMAGE_NAME ?= awesome:build
 .PHONY: ## build clean post
 
 build: ## Build the website
-	@sudo apt install ./hugo.deb
+	@apt-get update
+	@apt-get install hugo -y
 	@hugo -d dist/
 	@touch awesome-api
 
@@ -20,10 +21,11 @@ package: ## Package the website
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
-	sudo apt install curl -y
-	curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-	apt install nodejs -y
-	npm install -g markdownlint-cli 1>&2
+	@apt-get update
+	@apt-get install curl -y
+	@curl -sL https://deb.nodesource.com/setup_16.x | bash -
+	@apt-get install nodejs -y
+	@npm install -g markdownlint-cli
 	@markdownlint README.md DEPLOY.md
 
 unit-tests: ## Run unit-tets of the project
