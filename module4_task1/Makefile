@@ -24,7 +24,7 @@ lint: ## Check markdown files for any syntax mistake
 	@sudo apt-get update
 	@sudo apt-get install curl -y
 	@curl -sL https://deb.nodesource.com/setup_16.x | bash -
-	@apt-get install nodejs -y
+	@sudo apt-get install nodejs -y
 	@npm install -g markdownlint-cli
 	@markdownlint README.md DEPLOY.md
 
