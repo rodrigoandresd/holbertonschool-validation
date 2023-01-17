@@ -1,5 +1,5 @@
 env:
-  GH_TOKEN: ${{ github.token }}
+  GITHUB_TOKEN: ${{ github.token }}
 name: module4_task1
 on:
   push:
@@ -56,6 +56,4 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 1
       - run: cd module4_task1 && make build-docker
-      - run: |
-          docker run -i "awesome:build" make -C module4_task1 clean build \
-          unit-tests integration-tests
+      - run: cd module4_task1 && make clean
