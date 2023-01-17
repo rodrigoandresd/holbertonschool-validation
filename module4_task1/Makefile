@@ -3,8 +3,6 @@ DOCKER_IMAGE_NAME ?= awesome:build
 .PHONY: ## build clean post
 
 build: ## Build the website
-	@apt-get update
-	@apt-get install hugo -y
 	@hugo -d dist/
 	@touch awesome-api
 
