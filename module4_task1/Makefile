@@ -20,6 +20,10 @@ package: ## Package the website
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
+	apt install curl -y
+	curl --silent --location https://deb.nodesource.com/setup_16.x | bash -
+	apt install nodejs -y
+	npm install -g markdownlint-cli 1>&2
 	@markdownlint README.md DEPLOY.md
 
 unit-tests: ## Run unit-tets of the project
