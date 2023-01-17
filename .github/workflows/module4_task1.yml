@@ -38,7 +38,7 @@ jobs:
           # This is other version
       - run: gh release create v1.0.1 --title "v1.0.1" \
           --notes DEPLOY.md 2>/dev/null || echo "OK"
-      - run: cd module4_task0 && make lint
+      - run: cd module4_task1 && make lint
       - uses: release-drafter/release-drafter@v5.21.1
       - uses: nwtgck/actions-netlify@v1.2
         with:
