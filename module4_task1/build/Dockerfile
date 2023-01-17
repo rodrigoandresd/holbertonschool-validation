@@ -1,6 +1,6 @@
 FROM golang:1.15.8-buster
 
-RUN mkdir -p /module4_task1/dist
+RUN mkdir -p module4_task1/dist
 
 COPY . /module4_task1
 
