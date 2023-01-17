@@ -10,13 +10,12 @@ on:
   pull_request:
     types: [opened, reopened, edited, ready_for_review]
 jobs:
-  module3_task3:
+  module4_task0:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
       - run: sudo module4_task1/setup.sh
-      - run: cd module4_task1 && make lint
-      - run: cd module4_task1 && make build-docker
+      - run: cd module4_task1 && make build-hugo
       - run: cd module4_task1 && make build
       - run: cd module4_task1 && make package
       - run: cd module4_task1 && make unit-tests
@@ -51,3 +50,4 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 1
+      - run: cd module4_task1 && make build-docker

@@ -21,11 +21,6 @@ package: ## Package the website
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
-	@sudo apt-get update
-	@sudo apt-get install curl -y
-	@curl -sL https://deb.nodesource.com/setup_16.x | bash -
-	@sudo apt-get install nodejs -y
-	@npm install -g markdownlint-cli
 	@markdownlint README.md DEPLOY.md
 
 unit-tests: ## Run unit-tets of the project
@@ -38,6 +33,9 @@ validate: ## Validate the project
 
 build-docker: ## Build a docker image named awesome:build from the Dockerfile
 	@docker build -t $(DOCKER_IMAGE_NAME) ./build
+
+build-hugo: ## build dependencies
+	@sudo apt install ./hugo.deb
 
 help: ## Show commands usage information
 	@echo "Available targets:"
