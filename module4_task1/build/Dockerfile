@@ -4,13 +4,15 @@ WORKDIR /app
 
 COPY . .
 
-RUN apt-get update && apt-get install -y make wget \
-  && curl -sfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.32.2 \
-  && wget https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_linux-amd64.deb \
-  && dpkg -i hugo_extended_0.109.0_linux-amd64.deb \
-  && rm -f hugo_extended_0.109.0_linux-amd64.deb \
-  && apt-get install zip \
-  && npm install -g markdownlint-cli \
-  && rm -rf /usr/local/go
+RUN apt-get update
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+RUN apt install nodejs
+RUN npm install -g markdownlint-cli
+RUN apt install sudo -y
+RUN apt install xz-utils
+RUN apt install make -y
+RUN apt install zip -y
+RUN npm install -g markdownlint-cli
+RUN rm -rf /usr/local/go
 
 ENTRYPOINT ["make"]
