@@ -19,7 +19,7 @@ package: ## Package the website
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
-	@apt-get install markdownlint
+	@npm install -g markdownlint-cli
 	@markdownlint README.md DEPLOY.md
 
 unit-tests: ## Run unit-tets of the project
