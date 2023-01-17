@@ -21,7 +21,7 @@ package: ## Package the website
 	@zip -r awesome-website.zip dist/
 
 lint: ## Check markdown files for any syntax mistake
-	@sudu apt-get update
+	@sudo apt-get update
 	@sudo apt-get install curl -y
 	@curl -sL https://deb.nodesource.com/setup_16.x | bash -
 	@apt-get install nodejs -y
