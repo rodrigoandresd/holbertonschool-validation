@@ -20,7 +20,7 @@ jobs:
       - run: cd module4_task1 && sudo make build-hugo
       - run: npm install -g markdownlint-cli
       - run: cd module4_task1 && sudo make build
-      - run: cd module4_task1 && make package
+      - run: cd module4_task1 && sudo make package
       - run: cd module4_task1 && make unit-tests
       - run: cd module4_task1 && make integration-tests
       - run: cd module4_task1 && make validate
