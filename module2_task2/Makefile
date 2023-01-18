@@ -1,5 +1,5 @@
 build: ## compile the project source code into a binary named awesome-api
-	@make lint >/dev/null 2>&1 && go build || exit 1
+	@make lint && go build || exit -1
 
 run: ## Runs the program
 	@./awesome-api >./awesome.log 2>&1 &
