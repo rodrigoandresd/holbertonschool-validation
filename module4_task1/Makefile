@@ -1,4 +1,6 @@
-.PHONY: ## build clean post
+export PATH
+## Declare a list of phony targets
+.PHONY: build build-docker build-tools test
 
 build: ## Build the website
 	@apt-get update && apt-get install -y make wget
@@ -35,9 +37,10 @@ integration-tests: ## Run integration-tests of the project
 	@touch coverage-integrations.out
 
 validate: ## Validate the project
+	ls dist
 
 build-docker: ## Build a docker image named awesome:build from the Dockerfile
-	@docker build -t "awesome:build" ./build
+	@docker build -t "awesome:build" ./build --no-cache
 
 build-hugo: ## build dependencies
 	@apt-get update && apt-get install -y make wget

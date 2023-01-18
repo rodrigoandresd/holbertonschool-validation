@@ -24,19 +24,20 @@ jobs:
       - run: cd module4_task1 && make unit-tests
       - run: cd module4_task1 && make integration-tests
       - run: cd module4_task1 && make validate
+      - run: cd module4_task1 && make build-docker
       - uses: actions/upload-artifact@v3
         with:
           path: module4_task1/awesome-website.zip
       # create a Release
       - uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/1.0.1')
+        if: startsWith(github.ref, 'refs/tags/1.0.2')
         with:
           files: |
             module4_task1/awesome-website.zip
             module4_task1/DEPLOY.md
           body_path: module4_task1/DEPLOY.md
           # This is other version
-      - run: gh release create v1.0.1 --title "v1.0.1" \
+      - run: gh release create v1.0.1 --title "v1.0.2" \
           --notes DEPLOY.md 2>/dev/null || echo "OK"
       - uses: release-drafter/release-drafter@v5.21.1
       - uses: nwtgck/actions-netlify@v1.2
@@ -53,4 +54,3 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 1
-      - run: cd module4_task1 && make build-docker
