@@ -1,5 +1,4 @@
 build: ## compile the project source code into a binary named awesome-api
-	@go build -o awesome-api
 	@make lint && go build || exit -1
 
 run: ## Runs the program
