@@ -3,10 +3,9 @@ export PATH
 .PHONY: build build-docker build-tools test
 
 build: ## Build the website
-	@apt-get update && apt-get install -y make wget
-	@wget https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_linux-amd64.deb
-	@dpkg -i hugo_extended_0.109.0_linux-amd64.deb
-	@rm -f hugo_extended_0.109.0_linux-amd64.deb
+	@curl -L https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_linux-amd64.deb -o hugo.deb
+	@apt install ./hugo.deb
+	@rm ./hugo.deb
 	@hugo -d dist/
 	@touch awesome-api
 
@@ -43,10 +42,9 @@ build-docker: ## Build a docker image named awesome:build from the Dockerfile
 	@docker build -t "awesome:build" ./build --no-cache
 
 build-hugo: ## build dependencies
-	@apt-get update && apt-get install -y make wget
-	@wget https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_linux-amd64.deb
-	@dpkg -i hugo_extended_0.109.0_linux-amd64.deb
-	@rm -f hugo_extended_0.109.0_linux-amd64.deb
+	@curl -L https://github.com/gohugoio/hugo/releases/download/v0.109.0/hugo_extended_0.109.0_linux-amd64.deb -o hugo.deb
+	@apt install ./hugo.deb
+	@rm ./hugo.deb
 
 help: ## Show commands usage information
 	@echo "Available targets:"
