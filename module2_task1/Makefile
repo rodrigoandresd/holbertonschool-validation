@@ -6,7 +6,7 @@ run: ## Runs the program
 	@./awesome-api >./awesome.log 2>&1 &
 
 stop: ## Kills awesome-api's current process
-	@kill $(shell pgrep awesome-api)
+	@kill "$(shell pgrep awesome-api)" 2>/dev/null &
 
 clean: ## Delete the binary done with build command
 	@make stop
