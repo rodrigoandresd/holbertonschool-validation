@@ -18,5 +18,3 @@ test: ## Tests if the website is currently running properly
 help: ## Show this
 	@sed -ne '/@sed/!s/## //p' Makefile
 
-lint: ## Helps to make a lint on the files
-	@golangci-lint run
