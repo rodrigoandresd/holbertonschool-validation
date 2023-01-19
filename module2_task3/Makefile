@@ -15,8 +15,8 @@ clean: ## Delete the binary done with build command
 	@rm -r coverage-units.out
 
 test: ## Tests if the website is currently running properly
-	@curl http://localhost:9999 &
-	@curl http://localhost:9999/health
+	@make unit-tests &
+	@make integration-tests
 
 help: ## Show this
 	@sed -ne '/@sed/!s/## //p' Makefile
