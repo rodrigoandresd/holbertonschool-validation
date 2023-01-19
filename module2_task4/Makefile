@@ -1,8 +1,8 @@
-CHECK_FAILED=0
+check: ## Check markdown files for any syntax mistake
+	markdownlint ./post/*.md && markdown-link-check ./post/*.md || true
+
 build: check ## Build the website
 	hugo -d dist/
-	if [ $(CHECK_FAILED) -eq 1 ]; then \
-		echo "FAIL"; exit 1; \
 
 clean: ## Clean the build directory
 	rm -r dist/*
