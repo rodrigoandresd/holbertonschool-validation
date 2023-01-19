@@ -12,11 +12,11 @@ post: ## Create a new blog post
 	sed -i "s/title: .*/title: $(POST_TITLE)/" ./content/posts/$(POST_NAME).md
 
 check: ## Check markdown files for any syntax mistake
-	markdownlint post/*.md && markdown-link-check post/*.md
+	markdownlint ./post/*.md && markdown-link-check ./post/*.md
 
 validate: ## W3C validator
-	@make build
-	@./w3c_validator.py ./dist/index.html || true
+	make build
+	./w3c_validator.py ./dist/index.html || true
 
 help: ## Show commands usage information
 	@echo "Available targets:"
