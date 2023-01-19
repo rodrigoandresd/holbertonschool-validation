@@ -24,6 +24,10 @@ To clean up the build directory, run the following command:
 
 This will delete all files in the "dist/" directory.
 
+## Check
+
+Check markdown files for any syntax mistake
+
 ## Creating a New Blog Post
 To create a new blog post, run the following command:
 
