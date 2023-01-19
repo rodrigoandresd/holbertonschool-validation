@@ -1,6 +1,6 @@
 .PHONY: ## build clean post
 
-build: ## Build the website
+build: check ## Build the website
 	hugo -d dist/
 
 clean: ## Clean the build directory
@@ -12,7 +12,7 @@ post: ## Create a new blog post
 	sed -i "s/title: .*/title: $(POST_TITLE)/" ./content/posts/$(POST_NAME).md
 
 check: ## Check markdown files for any syntax mistake
-	@markdownlint post/*.md && @markdown-link-check post/*.md || true
+	markdownlint post/*.md && markdown-link-check post/*.md
 
 validate: ## W3C validator
 	@make build
