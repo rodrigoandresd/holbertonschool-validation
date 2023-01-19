@@ -32,9 +32,10 @@ check markdown files for any syntax mistake
 
 ## Validate
 
-    validate
+    make validate
 
 W3C validator
+
 ## Creating a New Blog Post
 To create a new blog post, run the following command:
 
