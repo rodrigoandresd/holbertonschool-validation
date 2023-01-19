@@ -12,9 +12,6 @@ post: ## Create a new blog post
 ## Update the title of the new post
 	sed -i "s/title: .*/title: $(POST_TITLE)/" ./content/posts/$(POST_NAME).md
 
-check: ## Check markdown files for any syntax mistake
-	markdownlint ./post/*.md && markdown-link-check ./post/*.md || true
-
 validate: ## W3C validator
 	make build
 	./w3c_validator.py ./dist/index.html || true
