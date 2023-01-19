@@ -1,6 +1,7 @@
 .PHONY: ## build clean post
 
 build: check ## Build the website
+	@if [ $$? -ne 0 ]; then exit 1; fi
 	hugo -d dist/
 
 clean: ## Clean the build directory
