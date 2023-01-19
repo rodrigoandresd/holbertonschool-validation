@@ -9,6 +9,13 @@ This project uses the Go programming language and the Hugo static site generator
 
 ## Lifecycle:
 
+## check
+
+    make check
+
+check markdown files for any syntax mistake
+
+## buid
 
 To build the website, run the following command from the root directory of the project:
 
@@ -23,12 +30,6 @@ To clean up the build directory, run the following command:
     make clean
 
 This will delete all files in the "dist/" directory.
-
-## Check
-
-    make check
-
-check markdown files for any syntax mistake
 
 ## Validate
 
