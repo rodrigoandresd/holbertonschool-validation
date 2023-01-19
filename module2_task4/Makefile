@@ -1,8 +1,8 @@
-.PHONY: ## build clean post
-
+CHECK_FAILED=0
 build: check ## Build the website
-	@if [ $$? -ne 0 ]; then exit 1; fi
 	hugo -d dist/
+	if [ $(CHECK_FAILED) -eq 1 ]; then \
+		echo "FAIL"; exit 1; \
 
 clean: ## Clean the build directory
 	rm -r dist/*
