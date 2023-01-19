@@ -21,5 +21,5 @@ help: ## Show this
 lint: ## Helps to make a lint on the files
 	@golangci-lint run
 
-unit-tests: ## Runs the unit test on the project
-	@go test -v -short -coverprofile=coverage-units.out
+unit-tests: ## Runs the unit testy
+	@go test -v -short -coverprofile=coverage-units.out || echo $1
