@@ -30,6 +30,11 @@ This will delete all files in the "dist/" directory.
 
 check markdown files for any syntax mistake
 
+## Validate
+
+    validate
+
+W3C validator
 ## Creating a New Blog Post
 To create a new blog post, run the following command:
 
