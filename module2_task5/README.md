@@ -51,6 +51,8 @@ For more information on the available targets and their usage, run the following
 
 This will display a list of available targets and a brief description of each one.
 
+run: Runs the built binary and send everything to awesome.log stop: Terminates the execution of awesome-api test: Tests API using go test lint: Lints all the go files using golangci-lint unit-tests: Runs implemented unit test using go test integration-tests: Runs integration test using go test
+
 ## Code Comments
 
 The source code for this project includes comments to provide additional context and information for readers. Please refer to these comments for more information on the inner workings of the code.
