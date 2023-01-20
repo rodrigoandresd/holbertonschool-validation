@@ -1,18 +1,18 @@
 go-build:	## Builds the API binary file using go
-	go mod init github.com/holbertonschool-validation/tree/main/module2_task5/awesome-api
+	go mod init github.com/rodrigoandresd/awesome-api
 	go get github.com/gorilla/mux
 	go build
 
 hugo-build: check ## Build the website using gohugo on the dist folder
-	hugo
+	@hugo -d dist/
 
 build:	## Builds with go and hugo
 	make go-build
 	make hugo-build
 
 check: ## Check markdown files for any syntax mistake
-	markdownlint ./content/post/*.md
-	markdown-link-check ./content/post/*.md
+	@markdownlint ./content/posts/*.md
+	@markdown-link-check ./content/posts/*.md
 
 post: ## Create a new blog post
 	hugo new posts/$(POST_NAME).md

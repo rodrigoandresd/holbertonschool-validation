@@ -1,6 +1,6 @@
 check: ## Check markdown files for any syntax mistake
 	set -e; \
-	markdownlint ./content/post/*.md && markdown-link-check ./content/post/*.md || true
+	markdownlint ./content/posts/*.md && markdown-link-check ./content/posts/*.md || true
 
 build: check ## Build the website
 	hugo -d dist/
