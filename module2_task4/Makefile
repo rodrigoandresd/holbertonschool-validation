@@ -1,5 +1,5 @@
 check: ## Check markdown files for any syntax mistake
-	markdownlint ./post/*.md && markdown-link-check ./post/*.md || true
+	markdownlint ./content/post/*.md && markdown-link-check ./content/post/*.md || true
 
 build: check ## Build the website
 	hugo -d dist/
