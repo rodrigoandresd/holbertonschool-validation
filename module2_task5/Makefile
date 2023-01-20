@@ -1,5 +1,5 @@
 go-build:	## Builds the API binary file using go
-	go mod init github.com/rodrigoandresd/awesome-api
+	go mod github.com/holbertonschool-validation/tree/main/module2_task5/awesome-api
 	go get github.com/gorilla/mux
 	go build
 
