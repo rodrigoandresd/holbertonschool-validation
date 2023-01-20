@@ -1,7 +1,8 @@
 check: ## Check markdown files for any syntax mistake
+	set -e; \
 	markdownlint ./content/post/*.md && markdown-link-check ./content/post/*.md || true
 
-build: check ## Build the website
+build: check || echo "FAIL"## Build the website
 	hugo -d dist/
 
 clean: ## Clean the build directory
