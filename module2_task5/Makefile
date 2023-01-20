@@ -1,23 +1,22 @@
 go-build:	## Builds the API binary file using go
-	go mod init github.com/rodrigoandresd/awesome-api
-	go get github.com/gorilla/mux
-	go build
+	@go mod init github.com/holbertonschool-validation/tree/main/module2_task5/awesome-api
+	@go get github.com/gorilla/mux
+	@go build
 
 hugo-build: check ## Build the website using gohugo on the dist folder
 	@hugo -d dist/
 
 build:	## Builds with go and hugo
-	make go-build
-	make hugo-build
+	@make go-build
+	@make hugo-build
 
 check: ## Check markdown files for any syntax mistake
 	@markdownlint ./content/posts/*.md
 	@markdown-link-check ./content/posts/*.md
 
 post: ## Create a new blog post
-	hugo new posts/$(POST_NAME).md
-## Update the title of the new post
-	sed -i "s/title: .*/title: $(POST_TITLE)/" ./content/posts/$(POST_NAME).md
+	@hugo new posts/${POST_NAME}.md
+	@sed -i "s/title: .*/title: ${POST_TITLE}/" ./content/posts/${POST_NAME}.md
 
 validate: ## W3C validator
 	make build
@@ -33,10 +32,10 @@ stop: ## Kills awesome-api's current process
 
 clean: ## Delete the binary done with build command
 	@make -s stop
-	-rm -rf awesome-api awesome.log coverage* go* ./dist
+	@-rm -rf awesome-api awesome.log coverage* go* ./dist
 
 test: ## Tests if the website is currently running properly
-	-make build
+	@-make build
 	@make unit-tests
 	@make integration-tests
 
