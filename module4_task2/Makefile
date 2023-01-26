@@ -1,4 +1,3 @@
-export PATH
 ## Declare a list of phony targets
 .PHONY: build
 
@@ -65,4 +64,4 @@ docker-tests:	## Test the generated docker image using container-structure-test 
 
 help: ## Show commands usage information
 	@echo "Available targets:"
-	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | awk '{ printf "  %-20s %s\n", $$1, $$2 }'
+	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'

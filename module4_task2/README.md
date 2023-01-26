@@ -54,11 +54,10 @@ following command:
 
 This will display a list of available targets and a brief description
 of each one.
-
+lint:    Lints all the go files 
 test: Tests API using go test
 unit-tests: Runs implemented unit test using go test
 integration-tests: Runs integration test using go test
-package: Generates a zip archive to deployment
 build-docker: Builds a Docker image from Dockerfile on build directory
 docker-tests: Test the generated docker image using container-structure-test and cst.yml config file
 
