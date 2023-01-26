@@ -4,9 +4,9 @@ on:
     branches:
       - main
     tags:
-      - "1.0.2"
+      - 1.0.0
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 0 * * *'
   pull_request:
     types:
       - opened
@@ -14,7 +14,9 @@ jobs:
   module4_task2:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        # yamllint disable rule:line-length
       - run: |
           curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && mkdir -p $HOME/bin && export PATH=$PATH:$HOME/bin && mv container-structure-test-linux-amd64 $HOME/bin/container-structure-test
           cd module4_task2
@@ -27,29 +29,27 @@ jobs:
           make package
           make lint
           make docker-tests
-      - uses: actions/upload-artifact@v3
+      - name: Archive generated zip
+        uses: actions/upload-artifact@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
+          name: awesome-website
           path: module4_task2/awesome-website.zip
-      # create a Release
-      - uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/1.0.2')
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
+          body_path: module4_task2/DEPLOY.md
           files: |
             module4_task2/awesome-website.zip
-            module4_task2/DEPLOY.md
-          body_path: module4_task2/DEPLOY.md
-          # This is other version
-      - run: gh release create v1.0.1 --title "v1.0.2" \
-          --notes DEPLOY.md 2>/dev/null || echo "OK"
-      - uses: release-drafter/release-drafter@v5.21.1
-      - uses: nwtgck/actions-netlify@v1.2
+      - name: deploy
+        uses: nwtgck/actions-netlify@v1.2
         with:
           publish-dir: './module4_task2/dist'
           production-branch: main
+          production-deploy: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "🚀 Deployed on"
-          publish-message: '🎉 Published on'
+          deploy-message: "Deploy from GitHub Actions"
           enable-pull-request-comment: true
           enable-commit-comment: true
           overwrites-pull-request-comment: true
