@@ -56,7 +56,6 @@ This will display a list of available targets and a brief description
 of each one.
 
 test: Tests API using go test
-lint: Lints all the go files using golangci-lint
 unit-tests: Runs implemented unit test using go test
 integration-tests: Runs integration test using go test
 package: Generates a zip archive to deployment
